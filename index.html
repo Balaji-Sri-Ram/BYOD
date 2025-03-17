@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script defer>
+        window.onload = () => lucide.createIcons();
+    </script>
     <link rel="website icon" type="png" href="byod img.png">
     <title>BYOD Manager</title>
 </head>
@@ -14,11 +18,11 @@
             <h1 class="text-xl font-bold text-blue-600">BYOD Manager</h1>
             <nav>
                 <ul class="flex space-x-4">
-                    <li><a href="#" onclick="loadPage('dashboard.html', this)" class="nav-link font-semibold text-gray-500 hover:bg-gray-100 p-2 rounded-lg transition">Dashboard</a></li>
-                    <li><a href="#" onclick="loadPage('devices.html', this)" class="nav-link font-semibold text-gray-500 hover:bg-gray-100 p-2 rounded-lg transition">Devices</a></li>
-                    <li><a href="#" onclick="loadPage('security.html', this)" class="nav-link font-semibold text-gray-500 hover:bg-gray-100 p-2 rounded-lg transition">Security</a></li>
-                    <li><a href="#" onclick="loadPage('activity.html', this)" class="nav-link font-semibold text-gray-500 hover:bg-gray-100 p-2 rounded-lg transition">Activities</a></li>
-                    <li><a href="login1.html" class="font-semibold text-gray-500 hover:bg-gray-100 p-2 rounded-lg transition">Login</a></li>
+                    <li><a href="#" onclick="loadPage('dashboard.html', this)" class="nav-link"><div class="flex gap-[6px] font-semibold text-gray-500 hover:bg-gray-100 p-2 rounded-lg transition"><i data-lucide="layout-grid" class="w-[18px] h-[18px] text-gray-500 mt-1"></i><span>Dashboard</span></div></a></li>
+                    <li><a href="#" onclick="loadPage('devices.html', this)" class="nav-link"><div class="flex gap-[6px] font-semibold text-gray-500 hover:bg-gray-100 p-2 rounded-lg transition"><i data-lucide="monitor" class="w-[18px] h-[18px] text-gray-500 mt-1"></i><span>Devices</span></div></a></li>
+                    <li><a href="#" onclick="loadPage('security.html', this)" class="nav-link"><div class="flex gap-[6px] font-semibold text-gray-500 hover:bg-gray-100 p-2 rounded-lg transition"><i data-lucide="shield" class="w-[18px] h-[18px] text-gray-500 mt-1"></i><span>Security</span></div></a></li>
+                    <li><a href="#" onclick="loadPage('activity.html', this)" class="nav-link"><div class="flex gap-[6px] font-semibold text-gray-500 hover:bg-gray-100 p-2 rounded-lg transition"><i data-lucide="activity" class="w-[18px] h-[18px] text-gray-500 mt-1"></i><span>Activities</span></div></a></li>
+                    <li><a href="login1.html" class="font-semibold mb-[-10px] text-gray-500 hover:bg-gray-100 p-2 rounded-lg transition absolute">Login</a></li>
 
                 </ul>
             </nav>
@@ -34,10 +38,15 @@
                 </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <div class="bg-white p-6 rounded-lg shadow">
-                    <h3 class="text-gray-600">Active Users</h3>
-                    <p class="text-4xl font-bold">124</p>
-                    <p class="text-gray-500">Currently online</p>
+                <div class="flex gap-3 bg-white p-6 rounded-lg shadow">
+                    <div class="rounded-[100%] mt-4 h-[55px] w-[55px] bg-blue-50 ">
+                        <i data-lucide="users" class="w-7 h-7 mt-4 text-blue-400 ml-[14px]"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-gray-600">Active Users</h3>
+                        <p class="text-4xl font-bold">124</p>
+                        <p class="text-gray-500">Currently online</p>
+                    </div>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow">
                     <h3 class="text-gray-600">Registered Devices</h3>
@@ -59,17 +68,26 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <section class="bg-white rounded-md p-5">
                 <h2 class="text-2xl font-semibold mb-4">Recent Activities</h2>
-                <div class="bg-gray-100 p-4 rounded-lg shadow mb-4">
-                    <p class="font-semibold text-black">New device registered</p>
-                    <p class="text-gray-500 text-sm">2 minutes ago</p>
+                <div class="flex items-center gap-3 bg-gray-100 p-4 rounded-lg shadow mb-4">
+                    <i data-lucide="activity" class="w-5 h-5 text-gray-500"></i>
+                    <div>
+                        <p class="font-semibold text-black">New device registered</p>
+                        <p class="text-gray-500 text-sm">2 minutes ago</p>
+                    </div>
                 </div>
-                <div class="bg-gray-100 p-4 rounded-lg shadow mb-4">
-                    <p class="font-semibold text-black">New device registered</p>
-                    <p class="text-gray-500 text-sm">2 minutes ago</p>
+                <div class="flex items-center gap-3 bg-gray-100 p-4 rounded-lg shadow mb-4">
+                    <i data-lucide="activity" class="w-5 h-5 text-gray-500"></i>
+                    <div>
+                        <p class="font-semibold text-black">New device registered</p>
+                        <p class="text-gray-500 text-sm">2 minutes ago</p>
+                    </div>
                 </div>
-                <div class="bg-gray-100 p-4 rounded-lg shadow mb-4">
-                    <p class="font-semibold text-black">New device registered</p>
-                    <p class="text-gray-500 text-sm">2 minutes ago</p>
+                <div class="flex gap-3 items-center bg-gray-100 p-4 rounded-lg shadow mb-4">
+                    <i data-lucide="activity" class="w-5 h-5 text-gray-500"></i>
+                    <div>
+                        <p class="font-semibold text-black">New device registered</p>
+                        <p class="text-gray-500 text-sm">2 minutes ago</p>
+                    </div>
                 </div>
             </section>
 
@@ -77,7 +95,7 @@
                 <h2 class="text-2xl font-semibold mb-4">Device Status</h2>
                 <div class="flex justify-between items-center bg-gray-100 p-4 rounded-lg shadow mb-4">
                     <div class="flex items-center gap-3">
-                        <span class="text-gray-400 text-lg">🖥️</span> 
+                        <i data-lucide="monitor" class="w-5 h-5 text-gray-500"></i>
                         <div>
                             <p class="font-semibold text-black">MacBook Pro - John Doe</p>
                             <p class="text-gray-500 text-sm">Last active: 5 mins ago</p>
@@ -89,7 +107,7 @@
                 </div>                
                 <div class="flex justify-between items-center bg-gray-100 p-4 rounded-lg shadow mb-4">
                     <div class="flex items-center gap-3">
-                        <span class="text-gray-400 text-lg">🖥️</span> 
+                        <i data-lucide="monitor" class="w-5 h-5 text-gray-500"></i>
                         <div>
                             <p class="font-semibold text-black">MacBook Pro - John Doe</p>
                             <p class="text-gray-500 text-sm">Last active: 5 mins ago</p>
@@ -101,7 +119,7 @@
                 </div>
                 <div class="flex justify-between items-center bg-gray-100 p-4 rounded-lg shadow">
                     <div class="flex items-center gap-3">
-                        <span class="text-gray-400 text-lg">🖥️</span> 
+                        <i data-lucide="monitor" class="w-5 h-5 text-gray-500"></i>
                         <div>
                             <p class="font-semibold text-black">MacBook Pro - John Doe</p>
                             <p class="text-gray-500 text-sm">Last active: 5 mins ago</p>
@@ -136,17 +154,25 @@
     <script>
         function loadPage(page, clickedElement) {
             fetch(page)
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById("main-content").innerHTML = data;
-            })
-            .catch(error => console.error("Error loading content:", error));
-    
-            // Remove active styles from all links
-            document.querySelectorAll(".nav-link").forEach(el => el.classList.remove("bg-blue-100", "text-blue-700", "font-semibold", "pointer-events-none"));
-    
-            // Apply styles to the clicked item and disable further clicks
-            clickedElement.classList.add("bg-blue-100", "text-blue-700", "font-semibold", "pointer-events-none");
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("main-content").innerHTML = data;
+                })
+                .catch(error => console.error("Error loading content:", error));
+
+            document.querySelectorAll(".nav-link div").forEach(el => el.classList.remove("bg-blue-100", "text-blue-700", "font-semibold", "pointer-events-none"));
+            document.querySelectorAll(".nav-link svg").forEach(icon => icon.classList.remove("stroke-blue-700"));
+
+            let divElement = clickedElement.querySelector("div");
+            let iconElement = clickedElement.querySelector("svg");
+
+            if (divElement) {
+                divElement.classList.add("bg-blue-100", "text-blue-700", "font-semibold", "pointer-events-none");
+            }
+
+            if (iconElement) {
+                iconElement.classList.add("stroke-blue-700");
+            }
         }
     </script>
 
