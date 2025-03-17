@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<style>
+    
+.input-box i {
+    position: absolute;
+    left: 85%;
+    top: 60%;
+    transform: translateY(-50%);
+    color: black;
+}
+</style>
+<body>
+    <div class="auth-container">
+        <div class="welcome-section">
+            <h1>Hello, Welcome!</h1>
+            <p>Already have an account?</p>
+            <button class="register-btn" id="btn1" onclick="window.location.href='login1.html'">Login</button>
+        </div>
+        
+        <div class="register-section">
+            <h2>Registration</h2>
+            <form>
+                <div class="input-box">
+                    <input type="text" placeholder="Username" required>
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="input-box">
+                    <input type="email" placeholder="Email" required>
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" placeholder="Password" required>
+                    <i class="fas fa-lock"></i>
+                </div>
+                <button type="submit" class="btn" onclick="window.location.href=('index.html')">Register</button>
+                <p>or register with social platforms</p>
+                <div class="social-icons">
+                    <i class="fab fa-google"></i>
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-github"></i>
+                    <i class="fab fa-linkedin"></i>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

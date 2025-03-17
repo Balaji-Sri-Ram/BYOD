@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            overflow: hidden;
+            margin: auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        #register-button {
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-spacing: 0; 
+            border-radius: 10px; 
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            font-size: 14px;
+            font-weight: bold;
+            color: #6c757d;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        td {
+            padding: 15px;
+            font-size: 14px;
+        }
+
+        tbody tr:last-child td {
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .status.active {
+            background-color: #d4f4dd;
+            color: #218838;
+        }
+
+        .manage-button {
+            background: none;
+            border: none;
+            color: #4c6ef5;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .manage-button:hover {
+            text-decoration: underline;
+        }
+
+        .device-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .device-icon {
+            width: 24px;
+            height: 24px;
+            margin-left: 10px;
+        }
+
+        small {
+            color: #6c757d;
+            font-size: 12px;
+        }
+
+        .device-icon {
+            width: 24px;
+            height: 24px;
+            color: #6c757d; 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2>Device Management</h2>
+        <button id="register-button" class="bg-blue-600 hover:bg-blue-700 transition">Register New Device</button>
+    </div>
+    <div class="container">
+        <table class="shadow">
+            <thead>
+                <tr>
+                    <th>Device</th>
+                    <th>Owner</th>
+                    <th>Status</th>
+                    <th>Last Active</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="device-info">
+                            <img class="device-icon" src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="Tablet">
+                            <div>
+                                <strong>Device 1</strong><br>
+                                <small>MAC: XX:XX:XX:XX:00</small>
+                            </div>
+                        </div>
+                    </td>
+                    <td>Student Name<br><small>student@example.com</small></td>
+                    <td><span class="status active">Active</span></td>
+                    <td>5 minutes ago</td>
+                    <td><button class="manage-button">Manage</button></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="device-info">
+                            <img class="device-icon" src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="Tablet">
+                            <div>
+                                <strong>Device 2</strong><br>
+                                <small>MAC: XX:XX:XX:XX:11</small>
+                            </div>
+                        </div>
+                    </td>
+                    <td>Student Name<br><small>student@example.com</small></td>
+                    <td><span class="status active">Active</span></td>
+                    <td>5 minutes ago</td>
+                    <td><button class="manage-button">Manage</button></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="device-info">
+                            <img class="device-icon" src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="Tablet">
+                            <div>
+                                <strong>Device 3</strong><br>
+                                <small>MAC: XX:XX:XX:XX:22</small>
+                            </div>
+                        </div>
+                    </td>
+                    <td>Student Name<br><small>student@example.com</small></td>
+                    <td><span class="status active">Active</span></td>
+                    <td>5 minutes ago</td>
+                    <td><button class="manage-button">Manage</button></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="device-info">
+                            <img class="device-icon" src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="Desktop">
+                            <div>
+                                <strong>Device 4</strong><br>
+                                <small>MAC: XX:XX:XX:XX:33</small>
+                            </div>
+                        </div>
+                    </td>
+                    <td>Student Name<br><small>student@example.com</small></td>
+                    <td><span class="status active">Active</span></td>
+                    <td>5 minutes ago</td>
+                    <td><button class="manage-button">Manage</button></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

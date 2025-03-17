@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="flex justify-between items-center mb-6">
+        <h1 class="text-2xl font-bold">Security Settings</h1>
+        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+            Update Policies
+        </button>
+    </div>
+
+    <div class="grid grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="flex items-center gap-2 mb-4">
+                <span class="text-indigo-600 text-2xl">🛡️</span>
+                <h2 class="text-lg font-semibold">Security Status</h2>
+            </div>
+            <div class="p-4 rounded-lg mb-3" id="bg1">
+                <p class="text-green-700 font-semibold">✅ System Security</p>
+                <p class="text-green-600 text-sm">All systems operational</p>
+            </div>
+            <div class="p-4 rounded-lg" id="bg2">
+                <p class="text-yellow-700 font-semibold">⚠️ Updates Available</p>
+                <p class="text-yellow-600 text-sm">2 security updates pending</p>
+            </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="flex items-center gap-2 mb-4">
+                <span class="text-indigo-600 text-2xl">⚡</span>
+                <h2 class="text-lg font-semibold">Quick Actions</h2>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <button class="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-100 transition">
+                    <span class="text-indigo-600 text-2xl">🛡️</span>
+                    <p class="text-sm font-semibold">Update Policies</p>
+                </button>
+                <button class="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-100 transition">
+                    <span class="text-yellow-600 text-2xl">⚠️</span>
+                    <p class="text-sm font-semibold">Security Scan</p>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-md mt-6">
+        <h2 class="text-lg font-semibold mb-4">Security Policies</h2>
+        <div class="grid gap-3 p-4 rounded-lg">
+            <div class="flex justify-between bg-gray-50 items-center py-2 border-b rounded-lg p-5 pt-5 pb-5">
+                <p>🛡️ Require device registration</p>
+                <input type="checkbox" checked class="toggle-checkbox">
+            </div>
+            <div class="flex justify-between bg-gray-50 items-center py-2 border-b rounded-lg p-5 pt-5 pb-5">
+                <p>🛡️ Enforce password policy</p>
+                <input type="checkbox" checked class="toggle-checkbox">
+            </div>
+            <div class="flex justify-between bg-gray-50 items-center py-2 border-b rounded-lg p-5 pt-5 pb-5">
+                <p>🛡️ Monitor network activity</p>
+                <input type="checkbox" checked class="toggle-checkbox">
+            </div>
+            <div class="flex justify-between bg-gray-50 items-center py-2 rounded-lg p-5 pt-5 pb-5">
+                <p>🛡️ Block unauthorized applications</p>
+                <input type="checkbox" checked class="toggle-checkbox">
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .toggle-checkbox {
+            appearance: none;
+            width: 40px;
+            height: 20px;
+            background: #ccc;
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .toggle-checkbox:checked {
+            background: #6366f1;
+        }
+        .toggle-checkbox:checked::before {
+            left: 22px;
+        }
+        .toggle-checkbox::before {
+            content: "";
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            background: white;
+            border-radius: 50%;
+            top: 1px;
+            left: 2px;
+            transition: left 0.3s;
+        }
+        #bg1{
+            background-color: rgb(237, 251, 237);
+        }
+        #bg2{
+            background-color: rgb(245, 245, 227);
+        }
+    </style>
+
+</body>
+</html>
