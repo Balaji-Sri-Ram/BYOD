@@ -39,7 +39,7 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <div class="flex gap-3 bg-white p-6 rounded-lg shadow">
-                    <div class="rounded-[100%] mt-4 h-[55px] w-[55px] bg-blue-50 ">
+                    <div class="rounded-[100%] mt-4 h-[55px] w-[55px] bg-blue-50">
                         <i data-lucide="users" class="w-7 h-7 mt-4 text-blue-400 ml-[14px]"></i>
                     </div>
                     <div>
@@ -48,20 +48,35 @@
                         <p class="text-gray-500">Currently online</p>
                     </div>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow">
-                    <h3 class="text-gray-600">Registered Devices</h3>
-                    <p class="text-4xl font-bold">256</p>
-                    <p class="text-gray-500">Total devices</p>
+                <div class="flex gap-3 bg-white p-6 rounded-lg shadow">
+                    <div class="rounded-[100%] mt-4 h-[55px] w-[55px] bg-green-50">
+                        <i data-lucide="monitor" class="w-7 h-7 mt-4 text-green-400 ml-[14px]"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-gray-600">Registered Devices</h3>
+                        <p class="text-4xl font-bold">256</p>
+                        <p class="text-gray-500">Total devices</p>
+                    </div>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow">
-                    <h3 class="text-gray-600">Security Alerts</h3>
-                    <p class="text-4xl font-bold">2</p>
-                    <p class="text-gray-500">Last 24 hours</p>
+                <div class="flex gap-3 bg-white p-6 rounded-lg shadow">
+                    <div class="rounded-[100%] mt-4 h-[55px] w-[55px] bg-red-50">
+                        <i data-lucide="shield-alert" class="w-7 h-7 mt-4 text-red-400 ml-[14px]"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-gray-600">Security Alerts</h3>
+                        <p class="text-4xl font-bold">2</p>
+                        <p class="text-gray-500">Last 24 hours</p>
+                    </div>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow">
-                    <h3 class="text-gray-600">Activity Level</h3>
-                    <p class="text-4xl font-bold">85%</p>
-                    <p class="text-gray-500">Average engagement</p>
+                <div class="flex gap-3 bg-white p-6 rounded-lg shadow">
+                    <div class="rounded-[100%] mt-4 h-[55px] w-[55px] bg-gray-50">
+                        <i data-lucide="activity" class="w-7 h-7 mt-4 text-black ml-[14px]"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-gray-600">Activity Level</h3>
+                        <p class="text-4xl font-bold">85%</p>
+                        <p class="text-gray-500">Average engagement</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -133,30 +148,13 @@
         </div>
     </main>
 
-    <!-- <script>
-        function loadPage(page) {
-            fetch(page)
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById("main-content").innerHTML = data;
-            })
-            .catch(error => console.log("Error loading content:", error));
-        }
-    
-        document.querySelectorAll(".nav-link").forEach(link => {
-            link.addEventListener("click", function() {
-                document.querySelectorAll(".nav-link").forEach(el => el.classList.remove("bg-blue-300", "text-blue-500")); 
-                this.classList.add("bg-blue-300", "text-blue-500");
-            });
-        });
-    </script> -->
-
     <script>
         function loadPage(page, clickedElement) {
             fetch(page)
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById("main-content").innerHTML = data;
+                    lucide.createIcons();
                 })
                 .catch(error => console.error("Error loading content:", error));
 
