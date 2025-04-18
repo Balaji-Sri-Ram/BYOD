@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>Device Management</title>
+    <style>
+        .status {
+            cursor: pointer;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .status:hover {
+            transform: scale(1.05);
+        }
+        .status.active {
+            background-color: #d4f4dd;
+            color: #218838;
+        }
+        .status.inactive {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .bottom-footer {
+            background-color: #f3f4f6;
+            color: #333333;
+            text-align: center;
+            font-size: 0.75rem;
+            padding: 1rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid #e5e7eb;
+        }
+        .bottom-footer .footer-top {
+            margin-bottom: 0.3rem;
+        }
+        .bottom-footer .footer-links a {
+            color: #333333;
+            text-decoration: none;
+            margin: 0 0.25rem;
+        }
+        .bottom-footer .footer-links a:hover {
+            text-decoration: underline;
+        }
+        .bottom-footer .footer-links span.separator {
+            margin: 0 0.25rem;
+            color: #999999;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+    <section id="devices-section" class="max-w-6xl mx-auto px-4 py-8">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-2xl font-bold">Device Management</h2>
+            <button
+                id="register-button"
+                class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                onclick="openModal()"
+            >
+                Register New Device
+            </button>
+        </div>
+
+        <input
+            type="text"
+            id="search"
+            placeholder="Search Devices..."
+            class="w-full p-2 border rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+
+        <div class="bg-white p-6 rounded-lg shadow">
+            <table class="w-full text-left border-collapse text-sm">
+                <thead>
+                    <tr class="border-b bg-gray-100">
+                        <th class="p-2">Device</th>
+                        <th class="p-2">Owner</th>
+                        <th class="p-2">Status</th>
+                        <th class="p-2">Last Active</th>
+                        <th class="p-2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="device-list"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <div
+        id="register-modal"
+        class="hidden fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50"
+    >
+        <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+            <h3 class="text-lg font-bold mb-4">Register New Device</h3>
+            <input
+                type="text"
+                id="device-name"
+                class="border p-2 w-full mb-2 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                placeholder="Device Name"
+            />
+            <input
+                type="text"
+                id="owner-name"
+                class="border p-2 w-full mb-2 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                placeholder="Owner Name"
+            />
+            <input
+                type="text"
+                id="mac-address"
+                class="border p-2 w-full mb-4 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                placeholder="MAC Address (e.g., 00:1A:2B:3C:4D:5E)"
+            />
+            <button
+                onclick="addDevice()"
+                class="bg-green-600 text-white px-4 py-2 rounded w-full hover:bg-green-700"
+            >
+                Register
+            </button>
+            <button
+                onclick="closeModal()"
+                class="text-red-600 mt-2 w-full hover:underline"
+            >
+                Cancel
+            </button>
+        </div>
+    </div>
+
+    <footer class="bottom-footer">
+        <div class="footer-top">
+            © All rights are reserved.
+        </div>
+        <div class="footer-links">
+            <a href="home.html">Home</a><span class="separator">|</span>
+            <a href="contact.html">Contact Us</a><span class="separator">|</span>
+            <a href="feedback.html">Feedback</a><span class="separator">|</span>
+            <a href="about.html">About Us</a>
+        </div>
+    </footer>
+    
+    <script src="devices.js"></script>
+</body>
+</html>
