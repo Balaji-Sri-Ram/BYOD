@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Our BYOD Project</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        window.onload = () => {
+            lucide.createIcons();
+        }
+    </script>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -17,7 +23,8 @@
         .header-container {
             background-color: #3b82f6;
             color: white;
-            padding: 50px 20px;
+            padding: 10px 20px;
+            padding-bottom: 30px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -25,7 +32,7 @@
 
         .header-container h1 {
             font-size: 2.5em;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
@@ -56,14 +63,15 @@
             background-color: rgba(255, 255, 255, 0.4);
             transform: scale(1.05);
         }
-
-        .container {
+        .box{
             max-width: 960px;
             margin: 40px auto;
-            padding: 30px;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .container {
+            padding: 30px;
         }
 
         h2 {
@@ -204,90 +212,115 @@
             transform: translateY(-5px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
         }
-    
-    
+        
+        .top-link {
+            position: absolute;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            color: white;
+            margin-bottom: -20px;
+            font-size: 17px;
+            gap: 5px;
+            text-decoration: underline;
+            margin-left: 920px;
+        }
+        .icon{
+            width: 17px;
+            height: 17px;
+            color: white;
+        }
     </style>
 </head>
 <body>
-    <div class="header-container">
-        <h1>About Us</h1>
-        <p>Explore our journey, core values, and the team behind our BYOD initiative.</p>
-        <div class="interactive-elements">
-            <button class="interactive-button" onclick="scrollToSection('values')">Our Values</button>
-            <button class="interactive-button" onclick="scrollToSection('team')">Meet My Team</button>
-        </div>
-    </div>
-
-    <div class="container">
-        <section id="story-section">
-            <h2>Our Journey</h2>
-            <div class="story-item">
-                <h3>The Inception</h3>
-                <p>The BYOD project was initiated in [Year] with the goal of [briefly describe the initial goal of the BYOD project].</p>
-            </div>
-            <div class="story-item">
-                <h3>Key Milestones</h3>
-                <p>Significant steps in our journey include [mention key milestones like pilot programs, policy implementations, etc.].</p>
-            </div>
-            <div class="story-item">
-                <h3>Evolution</h3>
-                <p>Over time, our BYOD approach has evolved to [describe how the project has changed and adapted].</p>
-            </div>
-            <div class="story-item">
-                <h3>Today</h3>
-                <p>Currently, our BYOD project focuses on [describe the current state and objectives of the BYOD project].</p>
-            </div>
-        </section>
-
+    
+    <div class="box">
         
-<section id="values" class="values-section">
-    <h2>Our Core Values (BYOD Project)</h2>
-    <div class="values-grid">
-        <div class="value-card">
-            <h4>Security</h4>
-            <p>Protecting data and devices and Respecting user data on personal devices.</p>
+        <div class="header-container">
+            <div class="top-link">
+                <a href="home.html" class="top-link">
+                    <i class="icon" data-lucide="corner-up-left"></i>
+                    Back
+                </a>
+            </div>
+            <h1>About Us</h1>
+            <p>Explore our journey, core values, and the team behind our BYOD initiative.</p>
+            <div class="interactive-elements">
+                <button class="interactive-button" onclick="scrollToSection('values')">Our Values</button>
+                <button class="interactive-button" onclick="scrollToSection('team')">Meet My Team</button>
+            </div>
         </div>
-        <div class="value-card">
-            <h4>Flexibility</h4>
-            <p>Supporting user device choice.</p>
-        </div>
-        <div class="value-card">
-            <h4>Collaboration</h4>
-            <p>Enabling teamwork across devices.</p>
-        </div>
-        <div class="value-card">
-            <h4>Support</h4>
-            <p>Assisting BYOD users effectively.</p>
-        </div>
-    </div>
-</section>
+        <div class="container">
+            <section id="story-section">
+                <h2>Our Journey</h2>
+                <div class="story-item">
+                    <h3>The Inception</h3>
+                    <p>The BYOD project was initiated in [Year] with the goal of [briefly describe the initial goal of the BYOD project].</p>
+                </div>
+                <div class="story-item">
+                    <h3>Key Milestones</h3>
+                    <p>Significant steps in our journey include [mention key milestones like pilot programs, policy implementations, etc.].</p>
+                </div>
+                <div class="story-item">
+                    <h3>Evolution</h3>
+                    <p>Over time, our BYOD approach has evolved to [describe how the project has changed and adapted].</p>
+                </div>
+                <div class="story-item">
+                    <h3>Today</h3>
+                    <p>Currently, our BYOD project focuses on [describe the current state and objectives of the BYOD project].</p>
+                </div>
+            </section>
 
-        <section id="team" class="team-section">
-            <h2>Meet the Team</h2>
-            <div class="team-grid">
-                <div class="team-member">
-                    <img src="ram.jpeg" alt="Alice Johnson">
-                    <h5>Ramu Parasa</h5>
-                    <p>Project Manager</p>
-                </div>
-                <div class="team-member">
-                    <img src="rajesh.png" alt="Bob Williams">
-                    <h5>Rajesh Somineni</h5>
-                    <p>Security Lead</p>
-                </div>
-                <div class="team-member">
-                    <img src="billu.jpg" alt="Charlie Brown">
-                    <h5>Balu Parasa</h5>
-                    <p>Support Specialist</p>
-                </div>
-                </div>
-        </section>
+            
+    <section id="values" class="values-section">
+        <h2>Our Core Values (BYOD Project)</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <h4>Security</h4>
+                <p>Protecting data and devices and Respecting user data on personal devices.</p>
+            </div>
+            <div class="value-card">
+                <h4>Flexibility</h4>
+                <p>Supporting user device choice.</p>
+            </div>
+            <div class="value-card">
+                <h4>Collaboration</h4>
+                <p>Enabling teamwork across devices.</p>
+            </div>
+            <div class="value-card">
+                <h4>Support</h4>
+                <p>Assisting BYOD users effectively.</p>
+            </div>
+        </div>
+    </section>
 
-        <section class="contact-section">
-            <h3>Have Questions About BYOD?</h3>
-            <p>Reach out to our team for more information. <a href="contact.html">Contact Us</a></p>
-        </section>
-    </div>
+            <section id="team" class="team-section">
+                <h2>Meet the Team</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="ram.jpeg" alt="Alice Johnson">
+                        <h5>Ramu Parasa</h5>
+                        <p>Project Manager</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="rajesh.png" alt="Bob Williams">
+                        <h5>Rajesh Somineni</h5>
+                        <p>Security Lead</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="billu.jpg" alt="Charlie Brown">
+                        <h5>Balu Parasa</h5>
+                        <p>Support Specialist</p>
+                    </div>
+                    </div>
+            </section>
+
+            <section class="contact-section">
+                <h3>Have Questions About BYOD?</h3>
+                <p>Reach out to our team for more information. <a href="contact.html">Contact Us</a></p>
+            </section>
+        </div>
+</div>
 
     <script>
         function scrollToSection(id) {
