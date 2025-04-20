@@ -1,0 +1,190 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   BYOD Management
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script defer>
+     window.onload = () => {
+        lucide.createIcons();
+        
+        ScrollReveal().reveal('.feature-card', {
+           delay: 200,
+           interval: 100,
+           origin: 'bottom',
+           distance: '20px',
+           easing: 'cubic-bezier(0.5, 0, 0, 1)',
+           scale: 0.9
+        });
+        
+        document.querySelectorAll('.feature-card').forEach(card => {
+           card.addEventListener('mouseenter', () => {
+              card.classList.add('transform', 'scale-105', 'shadow-lg');
+              card.querySelector('i').classList.add('animate-bounce');
+           });
+           card.addEventListener('mouseleave', () => {
+              card.classList.remove('transform', 'scale-105', 'shadow-lg');
+              card.querySelector('i').classList.remove('animate-bounce');
+           });
+        });
+     };
+  </script>
+  <style>
+     .features-bg {
+        background-image: url('bg byod img.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        position: relative;
+     }
+     .features-bg::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.85);
+     }
+     .feature-card {
+        transition: all 0.3s ease;
+        backdrop-filter: blur(5px);
+        background: rgba(255, 255, 255, 0.8);
+     }
+     .feature-card:hover {
+        background: white;
+     }
+     @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+     }
+     .floating-img {
+        animation: float 3s ease-in-out infinite;
+     }
+     .links a {
+         color: whitesmoke;
+         text-decoration: none;
+         transition: color 0.3s ease, text-decoration 0.3s ease;
+      }
+
+      .links a:hover {
+         color: white;
+         text-decoration: underline;
+      }
+  </style>
+ </head>
+ <body>
+  <div class=" px-5 py-8">
+   <div class="flex flex-col  md:flex-row items-center justify-between ml-5">
+    <div class="md:w-1/2">
+     <h1 class="text-6xl font-bold text-gray-900 mb-10">
+      Simplify Your <span class="text-cyan-800">BYOD</span> Management
+     </h1>
+     <p class="text-gray-700 mb-10">
+      Secure, monitor, and manage all your devices with our comprehensive BYOD solution. Perfect for schools, businesses, and organizations.
+     </p>
+     <div class="flex space-x-6">
+      <button class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300 transform hover:scale-105"  onclick="window.location.href='login1.html'">
+       Get Started
+      </button>
+      <button class="bg-white text-gray-900 border border-gray-300 px-6 py-2 rounded-md hover:bg-gray-100 transition duration-300 transform hover:scale-105" onclick="window.location.href='login1.html'">
+       Log In
+      </button>
+     </div>
+    </div>
+    <div class="md:w-1/2 mt-8 md:mt-0">
+      <img alt="BYOD Management" class="w-full h-auto rounded-lg floating-img" src="byod img.jpg"/>
+    </div>
+   </div>
+  </div>
+  <div class="features-bg py-[80px] mt-[70px] relative overflow-hidden">
+    <div class="container mx-auto px-4 relative z-10">
+     <h2 class="text-3xl font-bold text-gray-900 text-center mb-8">
+      Key Features
+     </h2>
+     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 justify-items-center max-w-7xl mx-auto">
+      <div class="feature-card p-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-xl ">
+       <div class="flex items-center mb-4">
+        <i data-lucide="monitor" class="text-blue-500 text-4xl transition-all duration-300">
+        </i>
+       </div>
+       <h3 class="text-xl font-semibold mb-2">
+        Device Management
+       </h3>
+       <p class="text-gray-600">
+        Register and manage all your devices in one place.
+       </p>
+      </div>
+      <div class="feature-card p-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-xl">
+       <div class="flex items-center mb-4">
+        <i data-lucide="shield" class="text-blue-500 text-4xl transition-all duration-300">
+        </i>
+       </div>
+       <h3 class="text-xl font-semibold mb-2">
+        Security Policies
+       </h3>
+       <p class="text-gray-600">
+        Define and enforce security policies for all devices.
+       </p>
+      </div>
+      <div class="feature-card p-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-xl w-[300px]">
+       <div class="flex items-center mb-4">
+        <i data-lucide="layout-grid" class="text-blue-500 text-4xl transition-all duration-300">
+        </i>
+       </div>
+       <h3 class="text-xl font-semibold mb-2">
+        Activity Monitoring
+       </h3>
+       <p class="text-gray-600">
+        Monitor device activities and detect security threats.
+       </p>
+      </div>
+      <div class="feature-card p-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-xl w-[300px]">
+       <div class="flex items-center mb-4">
+        <i data-lucide="activity" class="text-blue-500 text-4xl transition-all duration-300">
+        </i>
+       </div>
+       <h3 class="text-xl font-semibold mb-2">
+        Classroom Overview
+       </h3>
+       <p class="text-gray-600">
+        Get a quick overview of all devices in your classroom.
+       </p>
+      </div>
+     </div>
+    </div>
+   </div> 
+  <div class="bg-blue-500 pt-16 pb-14">
+   <div class="container mx-auto text-center text-white">
+    <h2 class="text-3xl font-bold mb-4">
+     Ready to get started?
+    </h2>
+    <p class="mb-8">
+     Join thousands of schools and businesses that trust our BYOD management solution.
+    </p>
+    <button class="bg-white text-blue-500 font-semibold py-2 px-4 rounded-md hover:bg-gray-100 transition duration-300 transform hover:scale-105" onclick="window.location.href='login2.html'">
+     Register Now
+    </button>
+    <div class="links flex gap-2 justify-center mt-12">
+      <a href="contact.html">Contact Us</a><span>|</span>
+      <a href="feedback.html">Feedback</a><span>|</span>
+      <a href="about.html">About Us</a>
+    </div>
+    <!-- <div>
+      <p>
+         If you need immediate assistance, please contact our support team at 
+         <a href="mailto:ramuparasao2@gmail.com" class="text-white hover:text-blue-900 hover:underline inline-block">
+           ramuparasa02@gmail.com
+         </a>
+       </p>
+    </div> -->
+   </div>
+  </div>
+ </body>
+</html>
