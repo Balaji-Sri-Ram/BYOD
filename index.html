@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script defer>
+        window.onload = () => lucide.createIcons();
+    </script>
+    <title>BYOD Manager</title>
+    <style>
+        .nav-link.selected div {
+            background-color: #dbeafe;
+            color: #2563eb;
+        }
+
+        .nav-link.selected svg {
+            color: #2563eb;
+        }
+
+        .nav-link svg {
+            transition: color 0.3s ease;
+        }
+
+        .bottom-footer {
+            background-color: #f3f4f6;
+            color: #333333;
+            text-align: center;
+            font-size: 0.75rem;
+            padding: 1rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .bottom-footer .footer-top {
+            margin-bottom: 0.3rem;
+        }
+
+        .bottom-footer .footer-links a {
+            color: #333333;
+            text-decoration: none;
+            margin: 0 0.25rem;
+        }
+
+        .bottom-footer .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .bottom-footer .footer-links span.separator {
+            margin: 0 0.25rem;
+            color: #999999;
+        }
+
+        .footer-hide {
+            display: none;
+        }
+
+        .status {
+            cursor: default;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .status.active {
+            background-color: #d4f4dd;
+            color: #218838;
+        }
+        .status.inactive {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .device-icon {
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4 flex justify-between items-center py-4">
+            <h1 class="flex gap-2 text-xl font-bold text-blue-600"><i data-lucide="book-open" class="w-6 h-6 mt-1 text-blue-600"></i>BYOD Manager</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li>
+                        <a href="#" onclick="loadPage('index.html', this)" class="nav-link selected">
+                            <div class="flex gap-[6px] font-semibold text-gray-500 hover:bg-gray-100 p-2 rounded-lg transition">
+                                <i data-lucide="layout-grid" class="w-[18px] h-[18px] text-gray-500 mt-1"></i>
+                                <span>Dashboard</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="loadPage('devices.html', this)" class="nav-link">
+                            <div class="flex gap-[6px] font-semibold text-gray-500 hover:bg-gray-100 p-2 rounded-lg transition">
+                                <i data-lucide="monitor" class="w-[18px] h-[18px] text-gray-500 mt-1"></i>
+                                <span>Devices</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="loadPage('security.html', this)" class="nav-link">
+                            <div class="flex gap-[6px] font-semibold text-gray-500 hover:bg-gray-100 p-2 rounded-lg transition">
+                                <i data-lucide="shield" class="w-[18px] h-[18px] text-gray-500 mt-1"></i>
+                                <span>Security</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="loadPage('activity.html', this)" class="nav-link">
+                            <div class="flex gap-[6px] font-semibold text-gray-500 hover:bg-gray-100 p-2 rounded-lg transition">
+                                <i data-lucide="activity" class="w-[18px] h-[18px] text-gray-500 mt-1"></i>
+                                <span>Activities</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="login1.html" class="border border-gray px-5 font-semibold mb-[-10px] text-gray-500 hover:bg-gray-100 p-2 rounded-lg transition absolute">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-full mx-auto px-4 py-8" id="main-content">
+        <section class="mb-8">
+            <div class="flex justify-between mb-4">
+                <h2 class="text-2xl font-bold">Classroom Overview</h2>
+                <div class="text-right">
+                    <button onclick="generateReport()" class="bg-blue-600 text-white px-4 py-2 rounded mb-2 hover:bg-blue-700 transition">Generate Report</button>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="flex gap-3 bg-white p-6 rounded-lg shadow">
+                    <div class="rounded-full mt-4 h-[55px] w-[55px] bg-blue-50 flex items-center justify-center">
+                        <i data-lucide="users" class="w-7 h-7 text-blue-400" aria-label="Active Users"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-gray-600">Active Users</h3>
+                        <p class="text-4xl font-bold" id="active-users-count">0</p>
+                        <p class="text-gray-500">Currently online</p>
+                    </div>
+                </div>
+                <div class="flex gap-3 bg-white p-6 rounded-lg shadow">
+                    <div class="rounded-full mt-4 h-[55px] w-[55px] bg-green-50 flex items-center justify-center">
+                        <i data-lucide="monitor" class="w-7 h-7 text-green-400" aria-label="Registered Devices"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-gray-600">Registered Devices</h3>
+                        <p class="text-4xl font-bold" id="registered-devices-count">0</p>
+                        <p class="text-gray-500">Total devices</p>
+                    </div>
+                </div>
+                <div class="flex gap-3 bg-white p-6 rounded-lg shadow">
+                    <div class="rounded-full mt-4 h-[55px] w-[55px] bg-red-50 flex items-center justify-center">
+                        <i data-lucide="shield-alert" class="w-7 h-7 text-red-400" aria-aria-label="Security Alerts"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-gray-600">Security Alerts</h3>
+                        <p class="text-4xl font-bold">2</p>
+                        <p class="text-gray-500">Last 24 hours</p>
+                    </div>
+                </div>
+                <div class="flex gap-3 bg-white p-6 rounded-lg shadow">
+                    <div class="rounded-full mt-4 h-[55px] w-[55px] bg-gray-50 flex items-center justify-center">
+                        <i data-lucide="activity" class="w-7 h-7 text-gray-700" aria-label="Activity Level"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-gray-600">Activity Level</h3>
+                        <p class="text-4xl font-bold">85%</p>
+                        <p class="text-gray-500">Average engagement</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <section class="bg-white rounded-lg p-5 shadow">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-2xl font-semibold">Recent Activities</h2>
+                    <button onclick="clearRecentActivities()" class="bg-red-400 text-white px-3 py-1 rounded hover:bg-red-600 transition">Clear Recent Activities</button>
+                </div>
+                <div id="recent-activities">
+                    </div>
+            </section>
+
+            <section class="bg-white rounded-lg p-5 shadow">
+                <h2 class="text-2xl font-semibold mb-4">Device Status</h2>
+                <div id="device-status-list">
+                    </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="bottom-footer" id="footer">
+        <div class="footer-top">
+            © All rights are reserved.
+        </div>
+        <div class="footer-links">
+            <a href="home.html">Home</a><span class="separator">|</span>
+            <a href="contact.html">Contact Us</a><span class="separator">|</span>
+            <a href="feedback.html">Feedback</a><span class="separator">|</span>
+            <a href="about.html">About Us</a>
+        </div>
+    </footer>
+    <script src="utils.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+    
+
+        async function loadPage(page, element, event) {
+            if (event) event.preventDefault();
+            fetch(page)
+                .then(res => res.text())
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const mainContent = doc.querySelector('main')?.innerHTML || html;
+                    document.getElementById('main-content').innerHTML = mainContent;
+                    lucide.createIcons();
+
+                    if (page === 'devices.html' || page === 'activity.html' || page === 'security.html') {
+                        document.getElementById('footer').classList.add('footer-hide');
+
+                        let scriptSrc;
+                        if (page === 'devices.html') {
+                            scriptSrc = 'devices.js';
+                        } else if (page === 'activity.html') {
+                            scriptSrc = 'activity.js';
+                        } else if (page === 'security.html') {
+                            scriptSrc = 'security.js';
+                        }
+
+                        if (scriptSrc) {
+                            const script = document.createElement('script');
+                            script.src = scriptSrc;
+                            script.onload = () => {
+                                if (page === 'devices.html' && typeof renderDevices === 'function') {
+                                    renderDevices();
+                                    document.addEventListener("input", (e) => {
+                                        if (e.target.id === "search") renderDevices();
+                                    });
+                                } else if (page === 'activity.html' && typeof applyFilters === 'function') {
+                                    applyFilters();
+                                } else if (page === 'security.html' && typeof initializeSecurityPage === 'function') {
+                                    initializeSecurityPage();
+                                }
+                            };
+                            document.getElementById('main-content').appendChild(script);
+                        }
+
+                    } else {
+                        document.getElementById('footer').classList.remove('footer-hide');
+                        updateDashboardData();
+                    }
+
+                    document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('selected'));
+                    element.classList.add('selected');
+                })
+                .catch(err => {
+                    console.error("Page load failed:", err);
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('selected'));
+            const firstNavLink = document.querySelector('.nav-link');
+            if (firstNavLink) {
+                firstNavLink.classList.add('selected');
+            }
+
+            if (window.location.pathname.endsWith('/index.html') || window.location.pathname === '/') {
+                document.getElementById('footer').classList.remove('footer-hide');
+                updateDashboardData();
+            }
+            setInterval(updateRecentActivitiesDisplay, 10000);
+        });
+
+        async function updateDashboardData() {
+            try {
+                const totalDeviceCountResponse = await fetch("get_device_count.php");
+                const totalDeviceCountResult = await totalDeviceCountResponse.json();
+                if (totalDeviceCountResult.success) {
+                    const registeredDevicesElement = document.getElementById('registered-devices-count');
+                    if (registeredDevicesElement) {
+                        registeredDevicesElement.innerText = totalDeviceCountResult.count;
+                    }
+                } else {
+                    console.error("Failed to fetch total device count:", totalDeviceCountResult.message);
+                }
+
+                
+                const activeDeviceCountResponse = await fetch("get_device_count.php?status=active");
+                const activeDeviceCountResult = await activeDeviceCountResponse.json();
+                if (activeDeviceCountResult.success) {
+                    const activeUsersElement = document.getElementById('active-users-count');
+                    if (activeUsersElement) {
+                        activeUsersElement.innerText = activeDeviceCountResult.count;
+                    }
+                } else {
+                    console.error("Failed to fetch active device count:", activeDeviceCountResult.message);
+                }
+
+                const deviceStatusResponse = await fetch("get_device_statuses.php");
+                const deviceStatusResult = await deviceStatusResponse.json();
+                const deviceStatusList = document.getElementById('device-status-list');
+                if (deviceStatusResult.success && deviceStatusList) {
+                    deviceStatusList.innerHTML = '';
+                    deviceStatusResult.devices.forEach(device => {
+                        const deviceDiv = document.createElement('div');
+                        deviceDiv.className = 'flex justify-between items-center bg-gray-100 p-4 rounded-lg mb-2';
+                        deviceDiv.setAttribute('data-mac', device.mac_address);
+                        deviceDiv.innerHTML = `
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="monitor" class="w-5 h-5 device-icon"></i>
+                                <div>
+                                    <p class="font-semibold text-black">${device.device_name} - ${device.owner_name}</p>
+                                    <p class="text-gray-500 text-sm">Last active: ${device.last_active || 'N/A'}</p>
+                                </div>
+                            </div>
+                            <span class="text-xs font-semibold inline-flex items-center px-3 py-1 rounded-full ${device.status === 'active' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">
+                                ${device.status.charAt(0).toUpperCase() + device.status.slice(1)}
+                            </span>
+                        `;
+                        deviceStatusList.appendChild(deviceDiv);
+                        lucide.createIcons(deviceDiv);
+                    });
+                } else {
+                    console.error("Failed to fetch device statuses:", deviceStatusResult.message);
+                    if (deviceStatusList) {
+                        deviceStatusList.innerHTML = '<p class="text-gray-500">Could not load device statuses.</p>';
+                    }
+                }
+
+                updateRecentActivitiesDisplay();
+
+            } catch (error) {
+                console.error("Error fetching dashboard data:", error);
+            }
+        }
+
+        function updateRecentActivitiesDisplay() {
+    const recentActivitiesData = localStorage.getItem('recentActivities');
+    const recentActivitiesResult = recentActivitiesData ? JSON.parse(recentActivitiesData) : [];
+    const recentActivitiesDiv = document.getElementById('recent-activities');
+
+    if (recentActivitiesDiv) {
+        recentActivitiesDiv.innerHTML = '';
+        if (recentActivitiesResult.length === 0) {
+            recentActivitiesDiv.innerHTML = '<p class="text-gray-500">No recent activities.</p>';
+            return;
+        }
+        recentActivitiesResult.forEach(activity => {
+            const activityDiv = document.createElement('div');
+            activityDiv.className = 'flex items-center gap-3 bg-gray-100 p-4 rounded-lg mb-2';
+            const timeAgo = calculateTimeAgo(new Date(activity.timestamp));
+            activityDiv.innerHTML = `
+                <i data-lucide="activity" class="w-5 h-5 text-gray-500"></i>
+                <div>
+                    <p class="font-semibold text-black">${activity.message}</p>
+                    <p class="text-gray-500 text-sm">${timeAgo}</p>
+                </div>
+            `;
+            recentActivitiesDiv.appendChild(activityDiv);
+            lucide.createIcons(activityDiv);
+        });
+    }
+}
+function clearRecentActivities() {
+    localStorage.removeItem('recentActivities');
+    updateRecentActivitiesDisplay();
+}
+
+function calculateTimeAgo(date) {
+        const seconds = Math.floor((new Date() - date) / 1000);
+        let interval = Math.floor(seconds / 31536000);
+        if (interval > 1) return interval + ' years ago';
+        interval = Math.floor(seconds / 2592000);
+        if (interval > 1) return interval + ' months ago';
+        interval = Math.floor(seconds / 86400);
+        if (interval > 1) return interval + ' days ago';
+        interval = Math.floor(seconds / 3600);
+        if (interval > 1) return interval + ' hours ago';
+        interval = Math.floor(seconds / 60);
+        if (interval > 1) return interval + ' minutes ago';
+        return Math.floor(seconds) + ' seconds ago';
+    }
+
+function generateReport() {
+    const { jsPDF } = window.jspdf;
+
+    const activeUsersElement = document.querySelector('.grid > div:nth-child(1) .text-4xl.font-bold');
+    const registeredDevicesElement = document.querySelector('.grid > div:nth-child(2) .text-4xl.font-bold');
+    const securityAlertsElement = document.querySelector('.grid > div:nth-child(3) .text-4xl.font-bold');
+    const activityLevelElement = document.querySelector('.grid > div:nth-child(4) .text-4xl.font-bold');
+
+    let activeUsers = activeUsersElement ? activeUsersElement.innerText : 'N/A';
+    let registeredDevices = registeredDevicesElement ? registeredDevicesElement.innerText : 'N/A';
+    let securityAlerts = securityAlertsElement ? securityAlertsElement.innerText : 'N/A';
+    let activityLevel = activityLevelElement ? activityLevelElement.innerText : 'N/A';
+
+    const pdf = new jsPDF();
+    pdf.text('BYOD Management Report', 10, 10);
+    pdf.text(`Active Users: ${activeUsers}`, 10, 20);
+    pdf.text(`Registered Devices: ${registeredDevices}`, 10, 30);
+    pdf.text(`Security Alerts: ${securityAlerts}`, 10, 40);
+    pdf.text(`Activity Level: ${activityLevel}`, 10, 50);
+
+    pdf.save('BYOD_Report.pdf');
+}
+
+function recordPolicyUpdate(policyName) {
+    addRecentActivity(`Policy "${policyName}" updated`);
+}
+
+function recordSecurityScan(deviceName, status) {
+    addRecentActivity(`Security scan on "${deviceName}" - Status: ${status}`);
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reset Password</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+
+    <script defer>
+        window.onload = () => {
+            lucide.createIcons();
+        };
+
+        async function resetPassword(event) {
+            event.preventDefault();
+
+            const emailInput = document.getElementById('email');
+            const newPasswordInput = document.getElementById('new-password');
+            const confirmPasswordInput = document.getElementById('confirm-password');
+
+            const email = emailInput.value;
+            const newPassword = newPasswordInput.value;
+            const confirmPassword = confirmPasswordInput.value;
+
+            if (newPassword !== confirmPassword) {
+                alert('New password and confirm password do not match.');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('email', email);
+            formData.append('new_password', newPassword);
+
+            try {
+                const response = await fetch('reset_password.php', {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    alert(data.message);
+                    window.location.href = 'login1.html'; // Redirect to login page
+                } else {
+                    alert(data.message);
+                }
+            } catch (error) {
+                console.error('Error resetting password:', error);
+                alert('An error occurred while resetting your password.');
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#f0f2f7] min-h-screen flex items-center justify-center p-6">
+    <div class="flex flex-col md:flex-row w-full max-w-[900px] h-[68vh] bg-white rounded-3xl shadow-lg overflow-hidden">
+        <div class="bg-[#6b8aff] text-white flex flex-col justify-between items-center text-center p-10 md:w-1/2">
+            <div class="mt-[100px]">
+                <h1 class="text-4xl font-bold mb-4">Reset Password</h1>
+                <p class="text-[14px] leading-relaxed max-w-xs">Enter your email and create a new password to reset your account.</p>
+            </div>
+            <div class="text-sm">
+                <span>Remember your password?</span>
+                <a href="login1.html" class="underline">Login</a>
+            </div>
+        </div>
+
+        <form class="p-12 md:w-1/2 flex flex-col space-y-6" autocomplete="off" onsubmit="resetPassword(event)">
+            <h2 class="text-3xl font-bold text-gray-900 text-center">Reset Password</h2>
+
+            <div class="flex flex-col space-y-1">
+                <label for="email" class="text-sm font-semibold text-gray-800">Email</label>
+                <div class="relative ">
+                    <span class="absolute inset-y-0 left-3 flex items-center text-gray-400">
+                        <i data-lucide="mail" class="w-4 h-4"></i>
+                    </span>
+                    <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        required
+                        placeholder="Enter your email"
+                        class="text-sm pl-10 pr-4 py-3 w-full border border-gray-300 rounded-md text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#6b8aff] focus:border-transparent"
+                    />
+                </div>
+            </div>
+
+            <div class="flex flex-col space-y-1">
+                <label for="new-password" class="text-sm font-semibold text-gray-800">New Password</label>
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-3 flex items-center text-gray-400">
+                        <i data-lucide="lock" class="w-4 h-4"></i>
+                    </span>
+                    <input
+                        id="new-password"
+                        name="new-password"
+                        type="password"
+                        required
+                        placeholder="Create new password"
+                        class="text-sm pl-10 pr-4 py-3 w-full border border-gray-300 rounded-md text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#6b8aff] focus:border-transparent"
+                    />
+                </div>
+            </div>
+
+            <div class="flex flex-col space-y-1">
+                <label for="confirm-password" class="text-sm font-semibold text-gray-800">Confirm New Password</label>
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-3 flex items-center text-gray-400">
+                        <i data-lucide="lock" class="w-4 h-4"></i>
+                    </span>
+                    <input
+                        id="confirm-password"
+                        name="confirm-password"
+                        type="password"
+                        required
+                        placeholder="Confirm new password"
+                        class="text-sm pl-10 pr-4 py-3 w-full border border-gray-300 rounded-md text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#6b8aff] focus:border-transparent"
+                    />
+                </div>
+            </div>
+
+            <button
+                type="submit"
+                class="w-full bg-[#6b8aff] text-white font-semibold py-3 rounded-md hover:bg-[#5a75e6] transition duration-200"
+            >
+                Reset Password
+            </button>
+        </form>
+    </div>
+
+</body>
+</html>
