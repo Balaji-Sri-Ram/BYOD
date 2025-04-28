@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -171,4 +172,178 @@
     </footer>
     <script src="activity.js"></script>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script defer>
+        window.onload = () => lucide.createIcons();
+    </script>
+    <link rel="website icon" type="png" href="byod img.png">
+    <title>BYOD Manager</title>
+</head>
+<style>
+    .bottom-footer {
+        background-color: #f3f4f6;
+        color: #333333;
+        text-align: center;
+        font-size: 0.75rem;
+        padding: 1rem 0;
+        margin-top: 3rem;
+        border-top: 1px solid #e5e7eb;
+    }
+
+    .bottom-footer .footer-top {
+        margin-bottom: 0.3rem;
+    }
+
+    .bottom-footer .footer-links a {
+        color: #333333;
+        text-decoration: none;
+        margin: 0 0.25rem;
+    }
+
+    .bottom-footer .footer-links a:hover {
+        text-decoration: underline;
+    }
+
+    .bottom-footer .footer-links span.separator {
+        margin: 0 0.25rem;
+        color: #999999;
+    }
+</style>
+
+<body class="bg-gray-100">
+
+    <div class="mx-auto">
+        <div class="flex justify-between">
+            <h1 class="text-2xl font-bold mb-4">Activity Monitor</h1>
+            <div class="flex gap-5 items-center mb-4">
+                <div class="relative">
+                    <select id="filterType" class="border-2 border-gray-200 bg-white text-black px-4 py-2 rounded hover:bg-gray-100 transition appearance-none pr-8">
+                        <option value="all">All Activities</option>
+                        <option value="alert">Security Alerts</option>
+                        <option value="device">Device Connected</option>
+                        <option value="policy">Policy Updates</option>
+                        <option value="notice">System Notices</option>
+                    </select>
+                    <i data-lucide="chevron-down" class="absolute right-3 top-3 pointer-events-none"></i>
+                </div>
+                <button onclick="applyFilters()" class="flex gap-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                    <i data-lucide="filter" class="text-white"></i> Apply Filter
+                </button>
+            </div>
+        </div>
+
+        <div id="activitiesContainer" class="space-y-4 bg-white p-5 rounded-lg">
+            <div class="bg-red-50 p-4 rounded-lg flex justify-between" data-type="alert">
+                <div class="flex gap-3">
+                    <i data-lucide="alert-triangle" class="w-5 h-5 mt-2 text-red-500"></i>
+                    <div>
+                        <h2 class="font-bold text-sm">Security Alert</h2>
+                        <p class="text-gray-500 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+                <span class="text-gray-500 text-sm whitespace-nowrap">2 minutes ago</span>
+            </div>
+
+            <div class="bg-blue-50 p-4 rounded-lg flex justify-between items-start" data-type="device">
+                <div>
+                    <div class="flex gap-3">
+                        <i data-lucide="activity" class="w-5 h-5 text-blue-500 mt-2"></i>
+                        <div>
+                            <h2 class="font-bold text-sm">Device Connected</h2>
+                            <p class="text-gray-500 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </div>
+                </div>
+                <span class="text-gray-500 text-sm whitespace-nowrap">2 minutes ago</span>
+            </div>
+            
+            <div class="bg-green-50 p-4 rounded-lg flex justify-between items-start" data-type="policy">
+                <div>
+                    <div class="flex gap-3">
+                        <i data-lucide="check-circle" class="w-5 h-5 mt-2 text-green-500"></i> 
+                        <div>
+                            <h2 class="font-bold text-sm">Policy Update</h2>
+                            <p class="text-gray-500 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </div>
+                </div>
+                <span class="text-gray-500 text-sm whitespace-nowrap">2 minutes ago</span>
+            </div>
+            
+            <div class="bg-yellow-50 p-4 rounded-lg flex justify-between items-start" data-type="notice">
+                <div>
+                    <div class="flex gap-3">
+                        <i data-lucide="info" class="w-5 h-5 mt-2 text-yellow-500"></i>
+                        <div>
+                            <h2 class="font-bold text-sm">System Notice</h2>
+                            <p class="text-gray-500 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </div>
+                </div>
+                <span class="text-gray-500 text-sm whitespace-nowrap">2 minutes ago</span>
+            </div>
+            
+            <div class="bg-red-50 p-4 rounded-lg flex justify-between" data-type="alert">
+                <div class="flex gap-3">
+                    <i data-lucide="alert-triangle" class="w-5 h-5 mt-2 text-red-500"></i>
+                    <div>
+                        <h2 class="font-bold text-sm">Security Alert</h2>
+                        <p class="text-gray-500 text-sm">Unauthorized access attempt detected.</p>
+                    </div>
+                </div>
+                <span class="text-gray-500 text-sm whitespace-nowrap">15 minutes ago</span>
+            </div>
+            
+            <div class="bg-blue-50 p-4 rounded-lg flex justify-between items-start" data-type="device">
+                <div>
+                    <div class="flex gap-3">
+                        <i data-lucide="activity" class="w-5 h-5 text-blue-500 mt-2"></i>
+                        <div>
+                            <h2 class="font-bold text-sm">Device Connected</h2>
+                            <p class="text-gray-500 text-sm">iPhone 13 connected to network.</p>
+                        </div>
+                    </div>
+                </div>
+                <span class="text-gray-500 text-sm whitespace-nowrap">1 hour ago</span>
+            </div>
+        </div>
+
+        <div class="mt-8 bg-white rounded-lg p-5">
+            <h2 class="font-semibold text-xl mb-4">Activity Statistics</h2>
+            <div class="flex gap-5">
+                <div class="bg-gray-100 rounded-lg p-5 w-full">
+                    <h3 id="totalActivities" class="text-2xl text-blue-600 font-bold">156</h3>
+                    <p class="text-gray-500">Total Activities Today</p>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-5 w-full">
+                    <h3 class="text-2xl text-green-600 font-bold">98%</h3>
+                    <p class="text-gray-500">Policy Compliance</p>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-5 w-full">
+                    <h3 id="activeAlerts" class="text-2xl text-yellow-600 font-bold">3</h3>
+                    <p class="text-gray-500">Active Alerts</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="bottom-footer">
+        <div class="footer-top">
+            © All rights are reserved.
+        </div>
+        <div class="footer-links">
+            <a href="home.html">Home</a><span class="separator">|</span>
+            <a href="contact.html">Contact Us</a><span class="separator">|</span>
+            <a href="feedback.html">Feedback</a><span class="separator">|</span>
+            <a href="about.html">About Us</a>
+        </div>
+    </footer>
+</body>
+>>>>>>> ce7708e3aea7bf4ad8e2f9a8a73612b8478d9a94
 </html>
