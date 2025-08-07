@@ -21,7 +21,6 @@ The purpose of this project is to:
 - **Activity Tracking**: The system tracks device activity and shows online/offline status in real-time.
 - **Security Page**: Includes options for administrators to implement or review security policies.
 
-> Note: Real-time status updates are handled using JavaScript and PHP (via AJAX or timed heartbeats), and device data is stored and managed using MySQL.
 
 ## 🛠️ Technologies Used
 
