@@ -3,7 +3,7 @@
 
 **BYOD (Bring Your Own Device)** is a web-based device management and monitoring system designed for use in schools or classrooms. It allows administrators or teachers to manage, monitor, and track students' personal devices that are brought to school for learning purposes.
 
-## Purpose of this Website
+## 🚀 Purpose of this Website
 
 The purpose of this project is to:
 
@@ -12,7 +12,7 @@ The purpose of this project is to:
 - **Provide real-time device management** including registration, status tracking, and activity logging.
 - Help schools and institutions ensure safe and controlled use of technology in educational settings.
 
-## How it Works
+## ⚙️ How it Works
 
 - **User Authentication**: The system provides login and registration functionality to ensure only authorized users can access the dashboard.
 - **Dashboard**: Displays analytics and quick insights about registered devices and activities.
